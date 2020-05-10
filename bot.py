@@ -1,5 +1,4 @@
 import discord
-import praw
 from discord.ext import commands, tasks
 from itertools import cycle
 import os
@@ -18,9 +17,13 @@ async def on_ready():
 @client.command()
 async def load(ctx, extension):
     if ctx.author.id in config['authorisedUsers']:
-        client.load_extension(f'cogs.{extension}')
-        await ctx.send('{} loaded'.format(extension))
-        print('{} loaded'.format(extension))
+        try:
+            client.load_extension(f'cogs.{extension}')
+            await ctx.send('{} loaded'.format(extension))
+            print('{} loaded'.format(extension))
+        except discord.ext.commands.errors.ExtensionNotFound as err:
+            await ctx.send(err)
+            return
     else:
         await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
         return
@@ -28,24 +31,27 @@ async def load(ctx, extension):
 @client.command()
 async def unload(ctx, extension):
     if ctx.author.id in config['authorisedUsers']:
-        client.unload_extension(f'cogs.{extension}')
-        await ctx.send('{} unloaded'.format(extension))
-        print('{} unloaded'.format(extension))
+        try:
+            client.unload_extension(f'cogs.{extension}')
+            await ctx.send('{} unloaded'.format(extension))
+            print('{} unloaded'.format(extension))
+        except discord.ext.commands.errors.ExtensionNotFound as err:
+            await ctx.send(err)
+            return
     else:
         await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
         return
 
-@unload.error
-async def unloadError(ctx, error, extension):
-    if isinstance(error, commands.CommandInvokeError):
-        await ctx.send('{} does not exist'.format(extension))
-
 @client.command()
 async def reload(ctx, extension):
     if ctx.author.id in config['authorisedUsers']:
-        client.reload_extension(f'cogs.{extension}')
-        await ctx.send('{} reloaded'.format(extension))
-        print('{} reloaded'.format(extension))
+        try:
+            client.reload_extension(f'cogs.{extension}')
+            await ctx.send('{} reloaded'.format(extension))
+            print('{} reloaded'.format(extension))
+        except discord.ext.commands.errors.ExtensionNotFound as err:
+            await ctx.send(err)
+            return
     else:
         await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
         return
