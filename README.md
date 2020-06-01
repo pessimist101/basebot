@@ -7,10 +7,12 @@ Input all the necessary fields. Authorised users is an array of user IDs, and lo
 
 ## Cogs
 All cogs should be in individual directories on the same level as the bot directory, like so:
-```.
+```
+.
 └── myBotFolder
     ├── basebot
     ├── cog1
     ├── cog2
-    ├── cog3```
+    ├── cog3
+```
 This is to isolate cog components and make it easier to add/remove cogs without worrying about conflicting assets
