@@ -6,7 +6,7 @@ Create a `config.json` file using the template `example.config.json`
 Input all the necessary fields.
 
 ## Cogs
-All cogs should be in individual directories on the same level as the bot directory, like so:
+All cogs should be in individual directories in the `cogs` directory, like so:
 ```
 .
 ├── bot.py
