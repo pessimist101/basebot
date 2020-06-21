@@ -6,9 +6,9 @@ Create a `config.json` file using the template `example.config.json`
 Input all the necessary fields. You'll need to acquire a bot token from the Discord Developers portal.
 Create a virtual environment and install the packages required for this bot within the virtual environment. I use the venv module in python.
 ```
-python3 -m venv ./env
-source ./env/bin/activate
-python3 -m pip install -r requirements.txt
+$ python3 -m venv ./env
+$ source ./env/bin/activate
+(env) $ python3 -m pip install -r requirements.txt
 ```
 
 ## Cogs
