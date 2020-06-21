@@ -15,58 +15,30 @@ async def on_ready():
     await client.get_channel(config['logChannel']).send('I\'m ready!')
 
 @client.command()
+@commands.is_owner()
 async def load(ctx, extension):
-    if ctx.author.id in config['authorisedUsers']:
-        try:
-            client.load_extension(f'cogs.{extension}')
-            await ctx.send('{} loaded'.format(extension))
-            print('{} loaded'.format(extension))
-        except discord.ext.commands.errors.ExtensionNotFound as err:
-            await ctx.send(err)
-            return
-    else:
-        await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
-        return
+    client.load_extension(f'cogs.{extension}')
+    await ctx.send('{} loaded'.format(extension))
+    print('{} loaded'.format(extension))
 
 @client.command()
+@commands.is_owner()
 async def unload(ctx, extension):
-    if ctx.author.id in config['authorisedUsers']:
-        try:
-            client.unload_extension(f'cogs.{extension}')
-            await ctx.send('{} unloaded'.format(extension))
-            print('{} unloaded'.format(extension))
-        except discord.ext.commands.errors.ExtensionNotFound as err:
-            await ctx.send(err)
-            return
-    else:
-        await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
-        return
+    client.unload_extension(f'cogs.{extension}')
+    await ctx.send('{} unloaded'.format(extension))
+    print('{} unloaded'.format(extension))
 
 @client.command()
+@commands.is_owner()
 async def reload(ctx, extension):
-    if ctx.author.id in config['authorisedUsers']:
-        try:
-            client.reload_extension(f'cogs.{extension}')
-            await ctx.send('{} reloaded'.format(extension))
-            print('{} reloaded'.format(extension))
-        except discord.ext.commands.errors.ExtensionNotFound as err:
-            await ctx.send(err)
-            return
-    else:
-        await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
-        return
+    client.reload_extension(f'cogs.{extension}')
+    await ctx.send('{} reloaded'.format(extension))
+    print('{} reloaded'.format(extension))
 
-availableCogs = []
-
-for folder in os.listdir('../'):
-    if folder == 'basebot':
+for filename in os.listdir('./'):
+    if filename == 'bot.py':
         continue
-    else:
-        availableCogs.append(folder)
-
-for cog in availableCogs:
-    for filename in os.listdir(f'../{cog}/'):
-        if filename.endswith('.py'):
-            client.load_extension(f'cogs.{filename[:-3]}')
+    if filename.endswith('.py'):
+        client.load_extension(f'{filename[:-3]}')
 
 client.run(config['token'])
