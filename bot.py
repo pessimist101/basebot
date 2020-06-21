@@ -13,7 +13,7 @@ client = commands.Bot(command_prefix = config['prefix'])
 async def on_ready():
     print('I\'m ready!')
     await client.get_channel(config['logChannel']).send('I\'m ready!')
-    await client.change_presence(activity=discord.Game(name=f'{config['prefix']} help'))
+    await client.change_presence(activity=discord.Game(name=f"{config['prefix']}help"))
 
 @client.command()
 @commands.is_owner()
