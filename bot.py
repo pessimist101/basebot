@@ -56,8 +56,17 @@ async def reload(ctx, extension):
         await ctx.send('You are not an authorised user. If you believe this is a mistake please contact <@377212919068229633>')
         return
 
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
-        client.load_extension(f'cogs.{filename[:-3]}')
+availableCogs = []
+
+for folder in os.listdir('../'):
+    if folder == 'basebot':
+        continue
+    else:
+        availableCogs.append(folder)
+
+for cog in availableCogs:
+    for filename in os.listdir(f'../{cog}/'):
+        if filename.endswith('.py'):
+            client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run(config['token'])
