@@ -3,7 +3,7 @@ This is a barebones Discord bot written in discord.py
 
 ## Setup
 Create a `config.json` file using the template `example.config.json`
-Input all the necessary fields.
+Input all the necessary fields. You'll need to acquire a bot token from the Discord Developers portal
 
 ## Cogs
 All cogs should be in the `cogs` directory, like so:
