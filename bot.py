@@ -36,8 +36,8 @@ async def reload(ctx, extension):
     await ctx.send('{} reloaded'.format(extension))
     print('{} reloaded'.format(extension))
 
-for filename in os.listdir('./cogs/'):
-    if filename.endswith('.py'):
-        client.load_extension(f'cogs.{filename[:-3]}')
+for directory in [i for i in os.listdir('cogs/') if os.path.isdir(i)]:
+    for cog in [i[:-3] for i in os.listdir(f'cogs/{directory}/') if i.endswith('.py')]:
+        client.load_extension(f'cogs.{directory}.{cog}')
 
 client.run(config['token'])
