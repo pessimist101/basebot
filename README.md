@@ -12,17 +12,21 @@ $ source ./env/bin/activate
 ```
 
 ## Cogs
-All cogs should be in the `cogs` directory, like so:
+All cogs should be in directories within the `cogs` directory, like so:
 ```
 .
 ├── bot.py
 ├── cogs
-│   ├── cog1.py
-│   ├── cog1.config.json
-│   ├── cog2.py
-│   ├── cog2.config.json
-│   ├── cog3.py
-│   └── cog3.config.json
+│   ├── mycog
+│   │   ├── config.json
+│   │   ├── mycog.py
+│   │   ├── README.md
+│   │   └── requirements.txt
+│   └── cog2
+│       ├── cog2.py
+│       ├── config.json
+│       ├── README.md
+│       └── requirements.txt
 └── config.json
 ```
 
