@@ -133,3 +133,6 @@ config.json
 
 # Cogs
 cogs/*
+
+# Scripts
+start.sh
