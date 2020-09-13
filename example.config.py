@@ -14,5 +14,5 @@ def get_env(key, required=False, or_else=None):
             return or_else
 
 PREFIX = get_env("PREFIX", required=True)
-TOKEN = get_env("", required=True)
+TOKEN = get_env("TOKEN", required=True)
 LOG_CHANNEL = int(get_env("LOG_CHANNEL", or_else="694838802660851712"))

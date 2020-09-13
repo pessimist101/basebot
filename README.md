@@ -2,7 +2,7 @@
 This is a barebones Discord bot written in discord.py
 
 ## Setup
-Create a `config.json` file using the template `example.config.json` and input all the necessary fields - you'll need to acquire a bot token from the Discord Developers portal.
+Create a `config.py` file using the template `example.config.py` and input all the necessary fields - you'll need to acquire a bot token from the Discord Developers portal.
 Create a virtual environment and install the packages required for this bot within the virtual environment. I use the venv module in python.
 ```
 $ python3 -m venv ./env
@@ -26,8 +26,8 @@ All cogs should be in directories within the `cogs` directory, like so:
 │       ├── config.json
 │       ├── README.md
 │       └── requirements.txt
-└── config.json
+└── config.py
 ```
 
 ## Running the bot
-Run the bot with `python3 bot.py`
+Run the bot with `./start.sh` (make sure to make this executable with `chmod +x start.sh`!)
