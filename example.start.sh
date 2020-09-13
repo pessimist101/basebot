@@ -3,4 +3,4 @@ source ./env/bin/activate
 
 export TOKEN=
 
-python3 button.py
+python3 bot.py
